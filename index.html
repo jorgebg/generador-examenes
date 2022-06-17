@@ -13,17 +13,16 @@
 </head>
 
 <body>
-    <header class="container">
-        <h1>Generador de exámenes</h1>
-        <p>Por <a href="https://twitter.com/javierfpanadero">Javier F. Panadero</a></p>
-    </header>
     <main class="container">
+        <h2>Generador de exámenes</h2>
+        <h5>Por <a href="https://twitter.com/javierfpanadero">Javier F. Panadero</a></h5>
         <p>Instrucciones:</p>
         <ol>
             <li>Prepara el examen de entrada (examen de ejemplo: <a href="examen.txt">examen.txt</a>).</li>
             <li>Elige un formato (papel o moodle) y sube el examen de entrada.</li>
             <li>Descarga el examen de salida.</li>
         </ol>
+        <h3>Programa</h3>
         <p id="status">Cargando...</p>
         <div class="choice" hidden>
             <form>
@@ -37,9 +36,7 @@
                 <input id="moodle" type="file" onchange="run(this, 'moodle.py', 'salida.xml');" id="file" accept=".txt">
             </form>
         </div>
-    </main>
-    <footer class="container">
-        <p>Fuentes</p>
+        <h3>Manuales de uso</h3>
         <ul>
             <li><a
                     href="https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/">Papel</a>
@@ -48,7 +45,7 @@
                     href="https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/">Moodle</a>
             </li>
         </ul>
-    </footer>
+    </main>
     <script type="text/javascript">
         const SCRIPTS = {};
         var pyodide = null;
