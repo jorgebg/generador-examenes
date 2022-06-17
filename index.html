@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang=es>
+
+<head>
+    <meta charset=utf-8>
+    <title>Generador de exámenes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="Programa para generar exámenes con preguntas de respuesta múltiple con valores variables, para imprimir y para Moodle">
+    <meta name="author" content="Javier F. Panadero">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+
+<body>
+    <h1>Generador de exámenes</h1>
+    <p>Por <a href="https://twitter.com/javierfpanadero">Javier F. Panadero</a></p>
+    <p>Instrucciones:</p>
+    <ol>
+        <li>Prepara el examen de entrada (examen de ejemplo: <a href="examen.txt">examen.txt</a>).</li>
+        <li>Elige un formato (papel o moodle) y sube el examen de entrada.</li>
+        <li>Descarga el examen de salida.</li>
+    </ol>
+    <p id="status">Cargando...</p>
+    <div class="choice" hidden>
+        <form>
+            <label for="papel">Papel</label>
+            <input id="papel" type="file" onchange="run(this, 'papel.py', 'output.txt');" id="file" accept=".txt">
+        </form>
+    </div>
+    <div class="choice" hidden>
+        <form>
+            <label for="moodle">Moodle</label>
+            <input id="moodle" type="file" onchange="run(this, 'moodle.py', 'salida.xml');" id="file" accept=".txt">
+        </form>
+    </div>
+    <footer>
+        <p>Fuentes</p>
+        <ul>
+            <li><a
+                    href="https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/">Papel</a>
+            </li>
+            <li><a
+                    href="https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/">Moodle</a>
+            </li>
+        </ul>
+    </footer>
+    <script type="text/javascript">
+        const SCRIPTS = {};
+        var pyodide = null;
+
+        // Cargar los scripts y Pyodide
+        Promise.all([
+            fetch('papel.py').then(res => res.text()),
+            fetch('moodle.py').then(res => res.text()),
+            loadPyodide(),
+        ]).then(([papel, moodle, _pyodide]) => {
+            SCRIPTS['papel.py'] = papel;
+            SCRIPTS['moodle.py'] = moodle;
+            document.querySelectorAll('.choice').forEach(function (ele, idx) {
+                ele.hidden = false;
+            })
+            document.getElementById('status').remove();
+            pyodide = _pyodide
+            console.log("Pyodide ready");
+        });
+
+        // Función ejecutada al subir el archivo
+        function run(input_element, script_filename, output_filename) {
+            // Leer el examen subido
+            var input_file = input_element.files[0];
+            var reader = new FileReader();
+            reader.readAsText(input_file);
+            reader.onload = evt => {
+                // Escribir el examen de entrada en el sistema de archivos virtual de Pyodide
+                var input_content = evt.target.result;
+                pyodide.FS.writeFile("examen.txt", input_content, { encoding: "utf8" });
+
+                // Ejecuar el script
+                var debug = pyodide.runPython(SCRIPTS[script_filename]);
+                console.log(debug) // Podemos ver la salida de texto del script en la consola
+
+                // Leer el examen de salida del sistema de archivos virtual de Pyodide
+                let output_content = pyodide.FS.readFile(output_filename, { encoding: "utf8" });
+                var output_length = output_content.length;
+                var output_encoded = new Uint8Array(output_length);
+                for (var i = 0; i < output_length; i++) {
+                    output_encoded[i] = output_content.charCodeAt(i);
+                }
+
+                // Disparar la descarga del archivo en el navegador creando un elemento temporal
+                var blob = new Blob([output_encoded], { type: 'application/octet-stream' });
+                var elem = window.document.createElement('a');
+                elem.href = window.URL.createObjectURL(blob);
+                elem.download = output_filename;
+                document.body.appendChild(elem);
+                elem.click();
+                document.body.removeChild(elem);
+            }
+        }
+    </script>
+</body>

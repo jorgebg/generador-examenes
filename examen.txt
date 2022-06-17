@@ -1,0 +1,17 @@
+entero,x1,20,25
+real,x2,0.3,0.4
+lista,x3,2,4,6,8
+@@@@
+
+Pregunta 1 @@ x1 @@, @@ x3 @@
+Respuesta 1a x1/x3 @@ x1/x3 @@
+Respuesta 1b
+Respuesta 1c
+
+Pregunta 2 @@ x2 @@
+Pregunta 2 (segunda linea)
++++p
+Respuesta 2a x2*2 @@ x2*2 @@
+Respuesta 2b
+Respuesta 2c
+Respuesta 2d
