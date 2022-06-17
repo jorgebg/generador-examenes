@@ -4,7 +4,7 @@
 <head>
     <meta charset=utf-8>
     <title>Generador de exámenes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
         content="Programa para generar exámenes con preguntas de respuesta múltiple con valores variables, para imprimir y para Moodle">
     <meta name="author" content="Javier F. Panadero">
@@ -13,28 +13,32 @@
 </head>
 
 <body>
-    <h1>Generador de exámenes</h1>
-    <p>Por <a href="https://twitter.com/javierfpanadero">Javier F. Panadero</a></p>
-    <p>Instrucciones:</p>
-    <ol>
-        <li>Prepara el examen de entrada (examen de ejemplo: <a href="examen.txt">examen.txt</a>).</li>
-        <li>Elige un formato (papel o moodle) y sube el examen de entrada.</li>
-        <li>Descarga el examen de salida.</li>
-    </ol>
-    <p id="status">Cargando...</p>
-    <div class="choice" hidden>
-        <form>
-            <label for="papel">Papel</label>
-            <input id="papel" type="file" onchange="run(this, 'papel.py', 'output.txt');" id="file" accept=".txt">
-        </form>
-    </div>
-    <div class="choice" hidden>
-        <form>
-            <label for="moodle">Moodle</label>
-            <input id="moodle" type="file" onchange="run(this, 'moodle.py', 'salida.xml');" id="file" accept=".txt">
-        </form>
-    </div>
-    <footer>
+    <header class="container">
+        <h1>Generador de exámenes</h1>
+        <p>Por <a href="https://twitter.com/javierfpanadero">Javier F. Panadero</a></p>
+    </header>
+    <main class="container">
+        <p>Instrucciones:</p>
+        <ol>
+            <li>Prepara el examen de entrada (examen de ejemplo: <a href="examen.txt">examen.txt</a>).</li>
+            <li>Elige un formato (papel o moodle) y sube el examen de entrada.</li>
+            <li>Descarga el examen de salida.</li>
+        </ol>
+        <p id="status">Cargando...</p>
+        <div class="choice" hidden>
+            <form>
+                <label for="papel">Papel</label>
+                <input id="papel" type="file" onchange="run(this, 'papel.py', 'output.txt');" id="file" accept=".txt">
+            </form>
+        </div>
+        <div class="choice" hidden>
+            <form>
+                <label for="moodle">Moodle</label>
+                <input id="moodle" type="file" onchange="run(this, 'moodle.py', 'salida.xml');" id="file" accept=".txt">
+            </form>
+        </div>
+    </main>
+    <footer class="container">
         <p>Fuentes</p>
         <ul>
             <li><a
