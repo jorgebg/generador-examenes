@@ -49,6 +49,7 @@
     <script type="text/javascript">
         const SCRIPTS = {};
         var pyodide = null;
+        var statusEl = document.getElementById('status');
 
         // Cargar los scripts y Pyodide
         Promise.all([
@@ -56,47 +57,59 @@
             fetch('moodle.py').then(res => res.text()),
             loadPyodide(),
         ]).then(([papel, moodle, _pyodide]) => {
+            // Guardar los scripts
             SCRIPTS['papel.py'] = papel;
             SCRIPTS['moodle.py'] = moodle;
-            document.querySelectorAll('.choice').forEach(function (ele, idx) {
-                ele.hidden = false;
-            })
-            document.getElementById('status').remove();
+
+            // Habilitar la interfaz
+            document.querySelectorAll('.choice').forEach(el => el.hidden = false)
+            statusEl.innerHTML = "";
+
+            // Asignar pyodide
             pyodide = _pyodide
             console.log("Pyodide ready");
         });
 
         // Función ejecutada al subir el archivo
         function run(input_element, script_filename, output_filename) {
+            statusEl.innerHTML = "Produciendo exámen...";
             // Leer el examen subido
-            var input_file = input_element.files[0];
+            var inputFile = input_element.files[0];
             var reader = new FileReader();
-            reader.readAsText(input_file);
+            reader.readAsText(inputFile);
             reader.onload = evt => {
-                // Escribir el examen de entrada en el sistema de archivos virtual de Pyodide
-                var input_content = evt.target.result;
-                pyodide.FS.writeFile("examen.txt", input_content, { encoding: "utf8" });
+                try {
+                    // Escribir el examen de entrada en el sistema de archivos virtual de Pyodide
+                    var inputContent = evt.target.result;
+                    pyodide.FS.writeFile("examen.txt", inputContent, { encoding: "utf8" });
 
-                // Ejecuar el script
-                var debug = pyodide.runPython(SCRIPTS[script_filename]);
-                console.log(debug) // Podemos ver la salida de texto del script en la consola
+                    // Ejecuar el script
+                    var debug = pyodide.runPython(SCRIPTS[script_filename]);
+                    console.log(debug) // Podemos ver la salida de texto del script en la consola
 
-                // Leer el examen de salida del sistema de archivos virtual de Pyodide
-                let output_content = pyodide.FS.readFile(output_filename, { encoding: "utf8" });
-                var output_length = output_content.length;
-                var output_encoded = new Uint8Array(output_length);
-                for (var i = 0; i < output_length; i++) {
-                    output_encoded[i] = output_content.charCodeAt(i);
+                    // Leer el examen de salida del sistema de archivos virtual de Pyodide
+                    let outputContent = pyodide.FS.readFile(output_filename, { encoding: "utf8" });
+                    var outputLength = outputContent.length;
+                    var outputEncoded = new Uint8Array(outputLength);
+                    for (var i = 0; i < outputLength; i++) {
+                        outputEncoded[i] = outputContent.charCodeAt(i);
+                    }
+
+                    // Disparar la descarga del archivo en el navegador creando un elemento temporal
+                    var blob = new Blob([outputEncoded], { type: 'application/octet-stream' });
+                    var elem = window.document.createElement('a');
+                    elem.href = window.URL.createObjectURL(blob);
+                    elem.download = output_filename;
+                    document.body.appendChild(elem);
+                    elem.click();
+                    document.body.removeChild(elem);
+                    statusEl.innerHTML = "";
                 }
-
-                // Disparar la descarga del archivo en el navegador creando un elemento temporal
-                var blob = new Blob([output_encoded], { type: 'application/octet-stream' });
-                var elem = window.document.createElement('a');
-                elem.href = window.URL.createObjectURL(blob);
-                elem.download = output_filename;
-                document.body.appendChild(elem);
-                elem.click();
-                document.body.removeChild(elem);
+                catch (err) {
+                    statusEl.innerHTML = "Error al producir el exámen: " + err.message;
+                } finally {
+                    pyodide.FS.unlink("examen.txt");
+                }
             }
         }
     </script>
