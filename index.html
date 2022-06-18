@@ -24,18 +24,27 @@
         </ol>
         <h3>Programa</h3>
         <p id="status">Cargando...</p>
-        <div class="choice" hidden>
-            <form>
-                <label for="papel">Papel</label>
-                <input id="papel" type="file" onchange="run(this, 'papel.py', 'output.txt');" id="file" accept=".txt">
-            </form>
-        </div>
-        <div class="choice" hidden>
-            <form>
-                <label for="moodle">Moodle</label>
-                <input id="moodle" type="file" onchange="run(this, 'moodle.py', 'salida.xml');" id="file" accept=".txt">
-            </form>
-        </div>
+
+        <form hidden>
+            <label for="entrada">Entrada:</label>
+            <input id="entrada" name="entrada" type="file" accept=".txt" required>
+
+            <fieldset>
+                <legend>Elige un formato de salida:</legend>
+
+                <div>
+                    <input type="radio" id="papel" name="script" value="papel.py" checked>
+                    <label for="papel">Papel (.txt)</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="moodle" name="script" value="moodle.py">
+                    <label for="moodle">Moodle (.xml)</label>
+                </div>
+            </fieldset>
+
+            <button type="submit">Descargar</button>
+        </form>
         <h3>Manuales de uso</h3>
         <ul>
             <li><a
@@ -47,9 +56,13 @@
         </ul>
     </main>
     <script type="text/javascript">
+        const OUTPUT_FILENAMES = {
+            'papel.py': 'output.txt',
+            'moodle.py': 'salida.xml'
+        }
         const SCRIPTS = {};
+        const statusEl = document.getElementById('status');
         var pyodide = null;
-        var statusEl = document.getElementById('status');
 
         // Cargar los scripts y Pyodide
         Promise.all([
@@ -62,7 +75,7 @@
             SCRIPTS['moodle.py'] = moodle;
 
             // Habilitar la interfaz
-            document.querySelectorAll('.choice').forEach(el => el.hidden = false)
+            document.forms[0].hidden = false;
             statusEl.innerHTML = "";
 
             // Asignar pyodide
@@ -71,10 +84,18 @@
         });
 
         // Función ejecutada al subir el archivo
-        function run(input_element, script_filename, output_filename) {
+        function processForm(e) {
+            e.preventDefault();
             statusEl.innerHTML = "Produciendo exámen...";
+            
+            // Obtener los valores del formulario
+            const formData = new FormData(e.target);
+            const scriptName = formData.get('script');
+            const entrada = document.getElementById('entrada');
+            const outputFilename = OUTPUT_FILENAMES[scriptName];
+
             // Leer el examen subido
-            var inputFile = input_element.files[0];
+            var inputFile = entrada.files[0];
             var reader = new FileReader();
             reader.readAsText(inputFile);
             reader.onload = evt => {
@@ -83,12 +104,13 @@
                     var inputContent = evt.target.result;
                     pyodide.FS.writeFile("examen.txt", inputContent, { encoding: "utf8" });
 
-                    // Ejecuar el script
-                    var debug = pyodide.runPython(SCRIPTS[script_filename]);
+                    // Ejecutar el script
+                    pyodide.globals.clear()
+                    var debug = pyodide.runPython(SCRIPTS[scriptName]);
                     console.log(debug) // Podemos ver la salida de texto del script en la consola
 
                     // Leer el examen de salida del sistema de archivos virtual de Pyodide
-                    let outputContent = pyodide.FS.readFile(output_filename, { encoding: "utf8" });
+                    let outputContent = pyodide.FS.readFile(outputFilename, { encoding: "utf8" });
                     var outputLength = outputContent.length;
                     var outputEncoded = new Uint8Array(outputLength);
                     for (var i = 0; i < outputLength; i++) {
@@ -99,7 +121,7 @@
                     var blob = new Blob([outputEncoded], { type: 'application/octet-stream' });
                     var elem = window.document.createElement('a');
                     elem.href = window.URL.createObjectURL(blob);
-                    elem.download = output_filename;
+                    elem.download = outputFilename;
                     document.body.appendChild(elem);
                     elem.click();
                     document.body.removeChild(elem);
@@ -111,6 +133,12 @@
                     pyodide.FS.unlink("examen.txt");
                 }
             }
+            return false;
         }
+
+        // Generar el examen al enviar el formulario
+        var form = document.forms[0];
+        form.addEventListener("submit", processForm);
+
     </script>
 </body>
