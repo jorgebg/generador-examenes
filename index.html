@@ -23,7 +23,7 @@
             <li>Descarga el examen de salida.</li>
         </ol>
         <h3>Programa</h3>
-        <p id="status">Cargando...</p>
+        <p id="status" aria-busy="true">Cargando...</p>
 
         <form hidden>
             <label for="entrada">Entrada:</label>
@@ -76,7 +76,7 @@
 
             // Habilitar la interfaz
             document.forms[0].hidden = false;
-            statusEl.innerHTML = "";
+            statusEl.hidden = true;
 
             // Asignar pyodide
             pyodide = _pyodide
@@ -86,7 +86,7 @@
         // Función ejecutada al subir el archivo
         function processForm(e) {
             e.preventDefault();
-            statusEl.innerHTML = "Produciendo exámen...";
+            statusEl.hidden = false;
             
             // Obtener los valores del formulario
             const formData = new FormData(e.target);
@@ -125,14 +125,14 @@
                     document.body.appendChild(elem);
                     elem.click();
                     document.body.removeChild(elem);
-                    statusEl.innerHTML = "";
                 }
                 catch (err) {
-                    statusEl.innerHTML = "Error al producir el exámen: " + err.message;
+                    alert("Error al producir el exámen: " + err.message);
                 } finally {
                     pyodide.FS.unlink("examen.txt");
                 }
             }
+            statusEl.hidden = true
             return false;
         }
 
