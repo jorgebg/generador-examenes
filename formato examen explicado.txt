@@ -1,0 +1,70 @@
+﻿------------------EJEMPLO DE EXAMEN------------
+entero,x1,20,25
+real,x2,0.3,0.4
+lista,x3,2,4,6,8
+@@@@
+
+¿Cuál es el cociente entre estos dos números @@ x1 @@, @@ x3 @@ ?
+Dividirlos y da como resultado: @@ x1/x3 @@
+Restarlos y da como resultado: @@ x1-x3 @@
+Ninguna de las anteriores
+
+¿Estás de acuerdo con estas afirmaciones?
+- El doble de @@ x2 @@ es @@ x2*2 @@
+- El triple de @@ x2 @@ es @@ x2*3 @@ 
++++p
+Con las dos
+Con ninguna
+Con la primera sí, con la segunda no, sería @@ x2*4 @@
+Ninguna de las anteriores
+
+------------------EXPLICACIÓN RÁPIDA-----------------------------
+
+- No se dejan líneas en blanco ni al principio ni al final del archivo.
+- Sin cabecera, examen tipo test habitual.
+- Cabecera para definir variables, su tipo y su rango. Termina la cabecera con cuatro arrobas.
+- Preguntas: Primera línea, enunciado. Segunda, respuesta correcta. Después, respuestas incorrectas.
+- Si el enunciado tiene más de una línea. Al final del enunciado se añade +++p
+- Si se quiere usar el valor de una variable se pone entre pareja de arrobas @@ x1 @@
+- Si se quiere usar un cálculo con una variable, también entre pareja de arrobas @@ x2*3 @@
+- Guárdese en un archivo txt con codificación UTF-8
+
+------------------EXPLICACIÓN DETALLADA
+
+1. Debe estar en formato txt
+2. Debe guardarse con codificación UTF-8
+
+3. Si quieres usar preguntas calculadas debes empezar el archivo con una cabecera declarándolas. Sin cabecera, será un examen test normal.
+- Sín líneas en blanco antes de la cabecera
+- Tipo: entero, real (decimal), lista (lista de valores)
+- Nombre de la variable. Puede hacerse con palabras, pero usar x1, x2, x3... es posible que te ahorre confusiones
+- Valores mínimo y máximo (si son enteros o reales), lista de valores si es una lista.
+- En cada examen los valores de las variables serán diferentes, dentro de los rangos establecidos.
+Termina la cabecera con cuatro arrobas y una línea en blanco.
+
+4. Preguntas:
+- La primera línea es el enunciado
+- La segunda línea es la respuesta correcta.
+- Las siguientes líneas son respuestas incorrectas. Puedes poner tantas como quieras. En Moodle restará al contestarlas lo correspondiente al número de opciones)
+- Cuando acaba la pregunta y sus respuestas se pone una línea en blanco.
+
+5. Preguntas con enunciados de más de una línea.
+- Pones todas las líneas del enunciado y después de la última pones +++p (indicando que ahí acaba el párrafo del enunciado).
+A partir de ahí pones las respuestas como en una pregunta normal.
+
+6. Uso de las variables
+- Si pones x1, en el examen aparecerá x1
+- Si quieres que salga su valor, debes poner @@ x1 @@
+- También puedes hacer operaciones con ellas y que se muestre su valor, por ejemplo dividir la variable x1 entre x3 sería así @@ x1/x3 @@
+(para las operaciones, usaremos la sintaxis de Python, que en operaciones sencillas sería la habitual. Para otras consultad, por ejemplo x2 al cuadrado sería x**2) 
+
+7. El programa va a mezclar tanto preguntas como respuestas.
+
+8. Corrección
+- En el examen en papel te sale al final la clave de corrección
+- En el examen de moodle se marca como correcta la primera respuesta que pusiste y se resta 1/(n-1) por respuesta incorrecta, siendo n el número de respuestas. Digamos 1/3 en cuatro opciones, 1/4 en cinco opciones, etc.
+
+9. Si necesitas incluir imágenes, tendrás que hacerlo a mano. Puedes poner en el enunciado Fig 1., Fig 2., etc. y luego añadir un conjunto de figuras o ir incluyéndolas a mano y borrando la referencia. 
+
+10. Si vas a hacer un examen sobre HTML u otro lenguaje de marcado, puede que tengas problemas y el programa confunda tus etiquetas con las suyas.
+
