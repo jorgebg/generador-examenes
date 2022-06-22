@@ -1,0 +1,18 @@
+﻿entero,x1,20,25
+real,x2,0.3,0.4
+lista,x3,2,4,6,8
+@@@@
+
+¿Cuál es el cociente entre estos dos números @@ x1 @@, @@ x3 @@ ?
+Dividirlos y da como resultado: @@ x1/x3 @@
+Restarlos y da como resultado: @@ x1-x3 @@
+Ninguna de las anteriores
+
+¿Estás de acuerdo con estas afirmaciones?
+- El doble de @@ x2 @@ es @@ x2*2 @@
+- El triple de @@ x2 @@ es @@ x2*3 @@ 
++++p
+Con las dos
+Con ninguna
+Con la primera sí, con la segunda no, sería @@ x2*4 @@
+Ninguna de las anteriores
