@@ -3,142 +3,179 @@
 
 <head>
     <meta charset=utf-8>
-    <title>Generador de exámenes</title>
+    <title>Generador de Exámenes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
         content="Programa para generar exámenes con preguntas de respuesta múltiple con valores variables, para imprimir y para Moodle">
+    <meta name="keywords" content="exámen, Moodle, aleatorio">
     <meta name="author" content="Javier F. Panadero">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
     <script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <style>
+        .center {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
     <main class="container">
-        <h2>Generador de exámenes</h2>
-        <h5>Por <a href="https://twitter.com/javierfpanadero">Javier F. Panadero</a></h5>
-        <p>Instrucciones:</p>
-        <ol>
-            <li>Prepara el examen de entrada (examen de ejemplo: <a href="examen.txt">examen.txt</a>).</li>
-            <li>Elige un formato (papel o moodle) y sube el examen de entrada.</li>
-            <li>Descarga el examen de salida.</li>
-        </ol>
-        <h3>Programa</h3>
-        <p id="status" aria-busy="true">Cargando...</p>
+        <header>
+            <nav>
+                <ul>
+                    <li><strong>📝 Generador de Exámenes</strong></li>
+                </ul>
+                <ul>
+                    <li><a href="#instrucciones-de-uso">Instrucciones</a></li>
+                </ul>
+            </nav>
+        </header>
+        <article>
+            <p id="status" aria-busy="true" class="center">Cargando...</p>
 
-        <form hidden>
-            <label for="entrada">Entrada:</label>
-            <input id="entrada" name="entrada" type="file" accept=".txt" required>
-
-            <fieldset>
-                <legend>Elige un formato de salida:</legend>
-
+            <form hidden class="grid">
                 <div>
-                    <input type="radio" id="papel" name="script" value="papel.py" checked>
-                    <label for="papel">Papel (.txt)</label>
+                    <label for="entrada">Examen de entrada:</label>
+                    <input id="entrada" name="entrada" type="file" accept=".txt" required>
                 </div>
-
                 <div>
-                    <input type="radio" id="moodle" name="script" value="moodle.py">
-                    <label for="moodle">Moodle (.xml)</label>
-                </div>
-            </fieldset>
+                    <fieldset>
+                        <legend>Formato de salida:</legend>
 
-            <button type="submit">Descargar</button>
-        </form>
-        <h3>Manuales de uso</h3>
-        <ul>
-            <li><a
-                    href="https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/">Papel</a>
-            </li>
-            <li><a
-                    href="https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/">Moodle</a>
-            </li>
-        </ul>
+                        <div>
+                            <input type="radio" id="papel" name="script" value="papel.py" checked>
+                            <label for="papel">Papel (.txt)</label>
+
+                            <div>
+                                <input type="radio" id="moodle" name="script" value="moodle.py">
+                                <label for="moodle">Moodle (.xml)</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div>
+                    <p></p>
+                    <button type="submit">Descargar</button>
+                </div>
+            </form>
+        </article>
+<!-- Begin README.md -->
+<h2 id="generador-de-exámenes">Generador de Exámenes</h2>
+<p><strong>Generador de Exámenes</strong> es un herramienta que facilita la <strong>creación de exámenes respuesta múltiple con diferentes valores</strong>.</p>
+<p>Los exámenes se pueden descargar en formato texto para imprimir en papel o en formato XML para las aulas virtuales de <a href="https://moodle.org/">Moodle</a>.</p>
+<p>Ofrece las siguientes funcionalidades:</p>
+<ul>
+<li>Mezcla preguntas (número arbitrario)</li>
+<li>Mezcla respuestas (número arbitrario)</li>
+<li>Admite preguntas multilínea (OPCIONAL)</li>
+<li>Admite valores aleatorios y cálculos con ellos en enunciados y respuestas. (OPCIONAL)</li>
+<li>Da la clave de corrección</li>
+</ul>
+<p>La idea es que podáis escribir el examen de manera <strong>cómoda e intuitiva</strong>.</p>
+<h4 id="licencia">Licencia</h4>
+<p><strong>Generador de Exámenes</strong> se ofrece bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">CC BY,NC,SA 4.0</a>, quedando expresamente prohibido su uso comercial.</p>
+<h4 id="autores">Autores</h4>
+<p>El programa fue desarrollado por <a href="https://twitter.com/javierfpanadero">Javier F.Panadero</a> en Google Colab y publicado en su blog <a href="https://lacienciaparatodos.wordpress.com/">La Ciencia para todos</a>:</p>
+<ul>
+<li><a href="https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/">Creación de exámenes respuesta múltiple con diferentes valores</a></li>
+<li><a href="https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/">Programa para subir a Moodle preguntas de respuesta múltiple con valores variables</a></li>
+</ul>
+<p>Posteriormente, esta web fue desarrollada por <a href="https://twitter.com/neuralhacker">Jorge Barata</a>, facilitando el uso del programa sin necesidad de usar Google Colab.</p>
+<h2 id="instrucciones-de-uso">Instrucciones de uso</h2>
+<ol type="1">
+<li>Prepara el examen de entrada (<a href="examen2.txt">ejemplo</a>)</li>
+<li>Elige un formato (<code>Papel</code> o <code>Moodle</code>) y sube el examen de entrada.</li>
+<li>Descarga el examen de salida.</li>
+</ol>
+<h4 id="ejemplo-de-exámen-de-entrada">Ejemplo de exámen de entrada</h4>
+<pre><code>entero,x1,20,25
+real,x2,0.3,0.4
+lista,x3,2,4,6,8
+@@@@
+
+¿Cuál es el cociente entre estos dos números @@ x1 @@, @@ x3 @@ ?
+Dividirlos y da como resultado: @@ x1/x3 @@
+Restarlos y da como resultado: @@ x1-x3 @@
+Ninguna de las anteriores
+
+¿Estás de acuerdo con estas afirmaciones?
+- El doble de @@ x2 @@ es @@ x2*2 @@
+- El triple de @@ x2 @@ es @@ x2*3 @@ 
++++p
+Con las dos
+Con ninguna
+Con la primera sí, con la segunda no, sería @@ x2*4 @@
+Ninguna de las anteriores</code></pre>
+<h4 id="explicación-rápida">Explicación rápida</h4>
+<ul>
+<li>No se dejan líneas en blanco ni al principio ni al final del archivo.</li>
+<li>Sin cabecera, examen tipo test habitual.</li>
+<li>Cabecera para definir variables, su tipo y su rango. Termina la cabecera con cuatro arrobas.</li>
+<li>Preguntas: Primera línea, enunciado. Segunda, respuesta correcta. Después, respuestas incorrectas.</li>
+<li>Si el enunciado tiene más de una línea. Al final del enunciado se añade <code>+++p</code></li>
+<li>Si se quiere usar el valor de una variable se pone entre pareja de arrobas: <code>@@ x1 @@</code></li>
+<li>Si se quiere usar un cálculo con una variable, también entre pareja de arrobas: <code>@@ x2*3 @@</code></li>
+<li>Guárdese en un archivo txt con codificación UTF-8</li>
+</ul>
+<h4 id="explicación-detallada">Explicación detallada</h4>
+<ol type="1">
+<li>Debe estar en formato texto (<code>.txt</code>)</li>
+<li>Debe guardarse con codificación UTF-8</li>
+<li>Si quieres usar preguntas calculadas debes empezar el archivo con una cabecera declarándolas. Sin cabecera, será un examen test normal.
+<ul>
+<li>Sin líneas en blanco antes de la cabecera</li>
+<li>Tipo: <code>entero</code>, <code>real</code> (decimal), <code>lista</code> (lista de valores)</li>
+<li>Nombre de la variable. Puede hacerse con palabras, pero usar <code>x1</code>, <code>x2</code>, <code>x3</code>… es posible que te ahorre confusiones</li>
+<li>Valores mínimo y máximo (si son enteros o reales), lista de valores si es una lista.</li>
+<li>En cada examen los valores de las variables serán diferentes, dentro de los rangos establecidos.</li>
+<li>Termina la cabecera con cuatro arrobas y una línea en blanco.</li>
+</ul></li>
+<li>Preguntas:
+<ul>
+<li>La primera línea es el enunciado</li>
+<li>La segunda línea es la respuesta correcta.</li>
+<li>Las siguientes líneas son respuestas incorrectas. Puedes poner tantas como quieras. En Moodle restará al contestarlas lo correspondiente al número de opciones)</li>
+<li>Cuando acaba la pregunta y sus respuestas se pone una línea en blanco.</li>
+</ul></li>
+<li>Preguntas con enunciados de más de una línea.
+<ul>
+<li>Pones todas las líneas del enunciado y después de la última pones <code>+++p</code> (indicando que ahí acaba el párrafo del enunciado).</li>
+<li>A partir de ahí pones las respuestas como en una pregunta normal.</li>
+</ul></li>
+<li>Uso de las variables
+<ul>
+<li>Si pones <code>x1</code>, en el examen aparecerá “x1”</li>
+<li>Si quieres que salga su valor, debes poner <code>@@ x1 @@</code></li>
+<li>También puedes hacer operaciones con ellas y que se muestre su valor, por ejemplo dividir la variable <code>x1</code> entre <code>x3</code> sería así: <code>@@ x1/x3 @@</code> (para las operaciones, usaremos la sintaxis de Python, que en operaciones sencillas sería la habitual. Para otras consultas, por ejemplo <code>x2</code> al cuadrado sería <code>x**2</code>)</li>
+</ul></li>
+<li>El programa va a mezclar tanto preguntas como respuestas.</li>
+<li>Corrección
+<ul>
+<li>En el examen en papel te sale al final la clave de corrección</li>
+<li>En el examen de moodle se marca como correcta la primera respuesta que pusiste y se resta <code>1/(n-1)</code> por respuesta incorrecta, siendo <code>n</code> el número de respuestas. Digamos 1/3 en cuatro opciones, 1/4 en cinco opciones, etc.</li>
+</ul></li>
+<li>Si necesitas incluir imágenes, tendrás que hacerlo a mano. Puedes poner en el enunciado Fig 1., Fig 2., etc. y luego añadir un conjunto de figuras o ir incluyéndolas a mano y borrando la referencia.</li>
+<li>Si vas a hacer un examen sobre HTML u otro lenguaje de marcado, puede que tengas problemas y el programa confunda tus etiquetas con las suyas.</li>
+</ol>
+<!-- Close README.md -->
+        <footer class="center">
+            <hr/>
+            <p><small>Web construida con <a href="https://pyodide.org/">Pyodide</a> y <a href="https://picocss.com/">pico.css</small></a></p>
+        </footer>
     </main>
-    <script type="text/javascript">
-        const OUTPUT_FILENAMES = {
-            'papel.py': 'output.txt',
-            'moodle.py': 'salida.xml'
-        }
-        const SCRIPTS = {};
-        const statusEl = document.getElementById('status');
-        var pyodide = null;
 
-        // Cargar los scripts y Pyodide
-        Promise.all([
-            fetch('papel.py').then(res => res.text()),
-            fetch('moodle.py').then(res => res.text()),
-            loadPyodide(),
-        ]).then(([papel, moodle, _pyodide]) => {
-            // Guardar los scripts
-            SCRIPTS['papel.py'] = papel;
-            SCRIPTS['moodle.py'] = moodle;
 
-            // Habilitar la interfaz
-            document.forms[0].hidden = false;
-            statusEl.hidden = true;
-
-            // Asignar pyodide
-            pyodide = _pyodide
-            console.log("Pyodide ready");
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+        kofiWidgetOverlay.draw('javierfpanadero', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Donar',
+            'floating-chat.donateButton.background-color': '#EFA00B',
+            'floating-chat.donateButton.text-color': '#fff'
         });
-
-        // Función ejecutada al subir el archivo
-        function processForm(e) {
-            e.preventDefault();
-            statusEl.hidden = false;
-            
-            // Obtener los valores del formulario
-            const formData = new FormData(e.target);
-            const scriptName = formData.get('script');
-            const entrada = document.getElementById('entrada');
-            const outputFilename = OUTPUT_FILENAMES[scriptName];
-
-            // Leer el examen subido
-            var inputFile = entrada.files[0];
-            var reader = new FileReader();
-            reader.readAsText(inputFile);
-            reader.onload = evt => {
-                try {
-                    // Escribir el examen de entrada en el sistema de archivos virtual de Pyodide
-                    var inputContent = evt.target.result;
-                    pyodide.FS.writeFile("examen.txt", inputContent, { encoding: "utf8" });
-
-                    // Ejecutar el script
-                    pyodide.globals.clear()
-                    var debug = pyodide.runPython(SCRIPTS[scriptName]);
-                    console.log(debug) // Podemos ver la salida de texto del script en la consola
-
-                    // Leer el examen de salida del sistema de archivos virtual de Pyodide
-                    let outputContent = pyodide.FS.readFile(outputFilename, { encoding: "utf8" });
-                    var outputLength = outputContent.length;
-                    var outputEncoded = new Uint8Array(outputLength);
-                    for (var i = 0; i < outputLength; i++) {
-                        outputEncoded[i] = outputContent.charCodeAt(i);
-                    }
-
-                    // Disparar la descarga del archivo en el navegador creando un elemento temporal
-                    var blob = new Blob([outputEncoded], { type: 'application/octet-stream' });
-                    var elem = window.document.createElement('a');
-                    elem.href = window.URL.createObjectURL(blob);
-                    elem.download = outputFilename;
-                    document.body.appendChild(elem);
-                    elem.click();
-                    document.body.removeChild(elem);
-                }
-                catch (err) {
-                    alert("Error al producir el exámen: " + err.message);
-                } finally {
-                    pyodide.FS.unlink("examen.txt");
-                }
-            }
-            statusEl.hidden = true
-            return false;
-        }
-
-        // Generar el examen al enviar el formulario
-        var form = document.forms[0];
-        form.addEventListener("submit", processForm);
-
     </script>
+    <script src='app.js'></script>
 </body>
+
+</html>

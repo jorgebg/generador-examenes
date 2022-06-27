@@ -66,20 +66,17 @@ La primera respuesta que aparece se tomará como correcta.
 No dejéis líneas en blanco al final del texto origen.
 
 '''
-try:
-    # Sólo ejecutar si se va a subir el archivo
-    from google.colab import files
 
-    uploaded = files.upload()
-    file = uploaded.popitem()[0]   # Se podrían haber selecciondo varios archivos para elegir, cogemos el primero usando la posición 0
-except ImportError:
-    google = False
-    file = 'examen.txt'
+# Sólo ejecutar si se va a subir el archivo
+from google.colab import files
+
+uploaded = files.upload()
+file = uploaded.popitem()[0]   # Se podrían haber selecciondo varios archivos para elegir, cogemos el primero usando la posición 0
 
 with open(file,'r') as archivo:
   texto_completo = archivo.read()
 
-# print(texto_completo)
+print(texto_completo)
 
 #with open('PruebaExamenAleatorio.txt','r') as f:   #Si cargamos fichero
     #texto_completo = f.read()
@@ -237,5 +234,4 @@ salida = "output.txt"   # Puede cambiarse a otro nombre
 with open(salida,"w") as archivo:
   archivo.write(test)
 
-if google:
-    files.download(salida)
+files.download(salida)
