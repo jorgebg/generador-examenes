@@ -23,7 +23,7 @@ La idea es que podáis escribir el examen de manera **cómoda e intuitiva**.
 
 #### Autores
 
-El programa fue desarrollado por [Javier F.Panadero](https://twitter.com/javierfpanadero) y publicado en su blog [La Ciencia
+El programa fue desarrollado por [Javier F. Panadero](https://twitter.com/javierfpanadero) y publicado en su blog [La Ciencia
 para todos](https://lacienciaparatodos.wordpress.com/).
 
 Posteriormente, esta web fue desarrollada por [Jorge Barata](https://twitter.com/neuralhacker), facilitando el uso del programa sin necesidad de usar Google Colab.
