@@ -23,12 +23,8 @@ La idea es que podáis escribir el examen de manera **cómoda e intuitiva**.
 
 #### Autores
 
-El programa fue desarrollado por [Javier F.Panadero](https://twitter.com/javierfpanadero) en Google Colab y publicado en su blog [La Ciencia
-para todos](https://lacienciaparatodos.wordpress.com/):
-
--   [Creación de exámenes respuesta múltiple con diferentes valores
-](https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/)
--   [Programa para subir a Moodle preguntas de respuesta múltiple con valores variables](https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/)
+El programa fue desarrollado por [Javier F.Panadero](https://twitter.com/javierfpanadero) y publicado en su blog [La Ciencia
+para todos](https://lacienciaparatodos.wordpress.com/).
 
 Posteriormente, esta web fue desarrollada por [Jorge Barata](https://twitter.com/neuralhacker), facilitando el uso del programa sin necesidad de usar Google Colab.
 
@@ -37,6 +33,10 @@ Posteriormente, esta web fue desarrollada por [Jorge Barata](https://twitter.com
 1.  Prepara el examen de entrada (<a href="examen2.txt" download="examen.txt">ejemplo</a>)
 2.  Elige un formato (`Papel` o `Moodle`) y sube el examen de entrada.
 3.  Descarga el examen de salida.
+
+Para aprender a usar esta herramienta recomendamos consultar el [Videotutorial](
+https://www.youtube.com/watch?v=FjHS49ZIDxs&list=PLzqyAKVt4MgM5T61zLBGef_QO_fVDhKHM).
+
 
 #### Ejemplo de exámen de entrada
 
@@ -63,6 +63,7 @@ Ninguna de las anteriores
 
 #### Explicación rápida
 
+- El archivo de entrada debe estar en formato texto (`.txt`).
 - No se dejan líneas en blanco ni al principio ni al final del archivo.
 - Sin cabecera, examen tipo test habitual.
 - Cabecera para definir variables, su tipo y su rango. Termina la cabecera con cuatro arrobas.
@@ -101,6 +102,15 @@ Ninguna de las anteriores
     - En el examen de moodle se marca como correcta la primera respuesta que pusiste y se resta `1/(n-1)` por respuesta incorrecta, siendo `n` el número de respuestas. Digamos 1/3 en cuatro opciones, 1/4 en cinco opciones, etc.
 9. Si necesitas incluir imágenes, tendrás que hacerlo a mano. Puedes poner en el enunciado Fig 1., Fig 2., etc. y luego añadir un conjunto de figuras o ir incluyéndolas a mano y borrando la referencia. 
 10. Si vas a hacer un examen sobre HTML u otro lenguaje de marcado, puede que tengas problemas y el programa confunda tus etiquetas con las suyas.
+
+
+#### Código
+
+Para más información sobre el código, consulte los artículos publicados en el blog de La Ciencia para todos:
+
+-   [Creación de exámenes respuesta múltiple con diferentes valores
+](https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/)
+-   [Programa para subir a Moodle preguntas de respuesta múltiple con valores variables](https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/)
 
 
 
