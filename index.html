@@ -168,11 +168,13 @@ Ninguna de las anteriores</code></pre>
 
     <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
     <script>
-        kofiWidgetOverlay.draw('javierfpanadero', {
-            'type': 'floating-chat',
-            'floating-chat.donateButton.text': 'Donar',
-            'floating-chat.donateButton.background-color': '#EFA00B',
-            'floating-chat.donateButton.text-color': '#fff'
+        window.addEventListener('load', (event) => {
+            kofiWidgetOverlay.draw('javierfpanadero', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Donar',
+                'floating-chat.donateButton.background-color': '#EFA00B',
+                'floating-chat.donateButton.text-color': '#fff'
+            });
         });
     </script>
     <script src="app.js"></script>
