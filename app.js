@@ -63,14 +63,9 @@ function processForm(e) {
 
             // Leer el examen de salida del sistema de archivos virtual de Pyodide
             let outputContent = pyodide.FS.readFile(outputFilename, { encoding: "utf8" });
-            var outputLength = outputContent.length;
-            var outputEncoded = new Uint8Array(outputLength);
-            for (var i = 0; i < outputLength; i++) {
-                outputEncoded[i] = outputContent.charCodeAt(i);
-            }
 
             // Disparar la descarga del archivo en el navegador creando un elemento temporal
-            var blob = new Blob([outputEncoded], { type: 'application/octet-stream' });
+            var blob = new Blob([outputContent], { type: "text/plain;charset=utf8" });
             var elem = window.document.createElement('a');
             elem.href = window.URL.createObjectURL(blob);
             elem.download = outputFilename;

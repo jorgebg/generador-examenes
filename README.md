@@ -34,7 +34,7 @@ Posteriormente, esta web fue desarrollada por [Jorge Barata](https://twitter.com
 
 ## Instrucciones de uso
 
-1.  Prepara el examen de entrada ([ejemplo](examen2.txt))
+1.  Prepara el examen de entrada (<a href="examen2.txt" download="examen.txt">ejemplo</a>)
 2.  Elige un formato (`Papel` o `Moodle`) y sube el examen de entrada.
 3.  Descarga el examen de salida.
 
