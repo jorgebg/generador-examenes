@@ -1,4 +1,3 @@
-<!-- Begin README.md -->
 ## Generador de Exámenes
 
 
@@ -113,5 +112,3 @@ Para más información sobre el código, consulte los artículos publicados en e
 -   [Programa para subir a Moodle preguntas de respuesta múltiple con valores variables](https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/)
 
 
-
-<!-- Close README.md -->
