@@ -1,0 +1,25 @@
+name: Build website
+
+on:
+  push:
+    paths:
+      - README.md
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          sudo apt-get install pandoc -y
+          touch README.md
+          make
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add index.html
+          if git commit -m "GitHub Action: Build website"
+          then
+            git push
+          else
+            echo "index.html didn't change"
+          fi
