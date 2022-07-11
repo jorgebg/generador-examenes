@@ -105,7 +105,7 @@ Ninguna de las anteriores
 
 #### Código
 
-Para más información sobre el código, consulte los artículos publicados en el blog de La Ciencia para todos:
+Para más información sobre el código, consulte los artículos publicados en el blog "La Ciencia para todos":
 
 -   [Creación de exámenes respuesta múltiple con diferentes valores
 ](https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/)
