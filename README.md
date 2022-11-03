@@ -70,6 +70,7 @@ Ninguna de las anteriores
 - Si el enunciado tiene más de una línea. Al final del enunciado se añade `+++p`
 - Si se quiere usar el valor de una variable se pone entre pareja de arrobas: `@@ x1 @@`
 - Si se quiere usar un cálculo con una variable, también entre pareja de arrobas: `@@ x2*3 @@`
+- En el examen en papel las variables tendrán el mismo valor en todo el examen. En Moodle, cambian de valor en cada pregunta.
 - Guárdese en un archivo txt con codificación UTF-8
 
 #### Explicación detallada
