@@ -448,8 +448,10 @@ for idx, pregunta in enumerate(examen_inicial):
       <text></text>
     </incorrectfeedback>
   '''
-    temporal = temporal.replace('PREGUNTA NÚMERO. COMENTARIO','Pregunta '+str(idx+1))
-    temporal = temporal.replace('NOMBRE PREGUNTA', 'Pregunta '+str(idx+1))
+    ordinal = str(idx + 1) if idx >= 9 else '0'+str(idx + 1)          #para que salgan 01, 02, 03.. si, no moodle las ordena luego mal
+    
+    temporal = temporal.replace('PREGUNTA NÚMERO. COMENTARIO','Pregunta '+ ordinal)
+    temporal = temporal.replace('NOMBRE PREGUNTA', 'Pregunta '+ ordinal)
     temporal = temporal.replace('ENUNCIADO', pregunta[0])
     
     num_respuestas = len(pregunta[1:])
