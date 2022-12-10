@@ -19,7 +19,6 @@ La idea es que podáis escribir el examen de manera **cómoda e intuitiva**.
 
 **Generador de Exámenes** se ofrece bajo licencia [CC BY,NC,SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es), quedando expresamente prohibido su uso comercial.
 
-
 #### Autores
 
 El programa fue desarrollado por [Javier F. Panadero](https://twitter.com/javierfpanadero) y publicado en su blog [La Ciencia
@@ -72,6 +71,8 @@ Ninguna de las anteriores
 - Si se quiere usar un cálculo con una variable, también entre pareja de arrobas: `@@ x2*3 @@`
 - En el examen en papel las variables tendrán el mismo valor en todo el examen. En Moodle, cambian de valor en cada pregunta.
 - **Guárdese en un archivo txt con codificación UTF-8**
+- Si quieres usar imágenes, sólo tienes que incluir en el enunciado esta etiqueta hmtl
+![image](https://user-images.githubusercontent.com/91572665/206852862-8564c491-6f3d-4e7d-8c3f-9644d3eb9926.png)
 
 #### Explicación detallada
 
@@ -102,6 +103,10 @@ Ninguna de las anteriores
     - En el examen de moodle se marca como correcta la primera respuesta que pusiste y se resta `1/(n-1)` por respuesta incorrecta, siendo `n` el número de respuestas. Digamos 1/3 en cuatro opciones, 1/4 en cinco opciones, etc.
 9. Si necesitas incluir imágenes, tendrás que hacerlo a mano. Puedes poner en el enunciado Fig 1., Fig 2., etc. y luego añadir un conjunto de figuras o ir incluyéndolas a mano y borrando la referencia. 
 10. Si vas a hacer un examen sobre HTML u otro lenguaje de marcado, puede que tengas problemas y el programa confunda tus etiquetas con las suyas.
+11. Si quieres usar imágenes, sólo tienes que incluir en el enunciado esta etiqueta hmtl
+![image](https://user-images.githubusercontent.com/91572665/206852862-8564c491-6f3d-4e7d-8c3f-9644d3eb9926.png) Si conoces html puedes añadir texto alternativo, tamaño y el resto de atributos. También puedes intentar añadir más características html a los enunciados o respuestas, creo que funcionarán bien.
+
+
 
 #### Código
 
