@@ -73,7 +73,7 @@ Ninguna de las anteriores
 - En el examen en papel las variables tendrán el mismo valor en todo el examen. En Moodle, cambian de valor en cada pregunta.
 - **Guárdese en un archivo txt con codificación UTF-8**
 - Si se quiere añadir una imagen en el enunciado basta con usar una etiqueta html, por ejemplo:
-  <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg"></p>
+  $lt;p;$gt;$lt;img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg"$gt;$lt;/p$gt;
 
 #### Explicación detallada
 
@@ -105,8 +105,8 @@ Ninguna de las anteriores
 9. Si necesitas incluir imágenes, tendrás que hacerlo a mano. Puedes poner en el enunciado Fig 1., Fig 2., etc. y luego añadir un conjunto de figuras o ir incluyéndolas a mano y borrando la referencia. 
 10. Si vas a hacer un examen sobre HTML u otro lenguaje de marcado, puede que tengas problemas y el programa confunda tus etiquetas con las suyas.
 11. Si se quiere añadir una imagen en el enunciado basta con usar una etiqueta html, por ejemplo:
-  <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg"></p>
-  pueden ponerse en la etiqueta todas los detalles que se deseen de tamaño, texto alternativo, etc.
+  $lt;p;$gt;$lt;img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg"$gt;$lt;/p$gt;
+  También pueden ponerse en la etiqueta todas los detalles que se deseen de tamaño, texto alternativo, etc.
 
 
 #### Código
