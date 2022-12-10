@@ -72,8 +72,6 @@ Ninguna de las anteriores
 - Si se quiere usar un cálculo con una variable, también entre pareja de arrobas: `@@ x2*3 @@`
 - En el examen en papel las variables tendrán el mismo valor en todo el examen. En Moodle, cambian de valor en cada pregunta.
 - **Guárdese en un archivo txt con codificación UTF-8**
-- Si se quiere añadir una imagen en el enunciado basta con usar una etiqueta html, por ejemplo:
-  $lt;p;$gt;$lt;img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg"$gt;$lt;/p$gt;
 
 #### Explicación detallada
 
@@ -104,10 +102,6 @@ Ninguna de las anteriores
     - En el examen de moodle se marca como correcta la primera respuesta que pusiste y se resta `1/(n-1)` por respuesta incorrecta, siendo `n` el número de respuestas. Digamos 1/3 en cuatro opciones, 1/4 en cinco opciones, etc.
 9. Si necesitas incluir imágenes, tendrás que hacerlo a mano. Puedes poner en el enunciado Fig 1., Fig 2., etc. y luego añadir un conjunto de figuras o ir incluyéndolas a mano y borrando la referencia. 
 10. Si vas a hacer un examen sobre HTML u otro lenguaje de marcado, puede que tengas problemas y el programa confunda tus etiquetas con las suyas.
-11. Si se quiere añadir una imagen en el enunciado basta con usar una etiqueta html, por ejemplo:
-  $lt;p;$gt;$lt;img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg"$gt;$lt;/p$gt;
-  También pueden ponerse en la etiqueta todas los detalles que se deseen de tamaño, texto alternativo, etc.
-
 
 #### Código
 
