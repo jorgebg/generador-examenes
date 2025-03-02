@@ -10,11 +10,23 @@
     <meta name="keywords" content="exámen, Moodle, aleatorio">
     <meta name="author" content="Javier F. Panadero">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <script src="./lib/pyodide-0.20.0/package/pyodide.js"></script>
+    <link rel="stylesheet" href="./lib/pico-2.0.6/package/css/pico.min.css">
     <style>
         .center {
             text-align: center;
+        }
+        .kofi-btn {
+            position: fixed;
+            bottom: 5px;
+            left: 5px;
+            background-color: #EFA00B;
+            border-radius: 100px;
+            padding: 5px 15px;
+            border: none;
+        }
+        .kofi-btn:focus {
+            --pico-box-shadow: none;
         }
     </style>
 </head>
@@ -44,11 +56,11 @@
                         <legend>Formato de salida:</legend>
 
                         <div>
-                            <input type="radio" id="papel" name="script" value="papel.py" checked>
+                            <input type="radio" id="papel" name="script" value="./papel.py" checked>
                             <label for="papel">Papel (.txt)</label>
 
                             <div>
-                                <input type="radio" id="moodle" name="script" value="moodle.py">
+                                <input type="radio" id="moodle" name="script" value="./moodle.py">
                                 <label for="moodle">Moodle (.xml)</label>
                             </div>
                         </div>
@@ -171,20 +183,8 @@ Ninguna de las anteriores</code></pre>
             <p><small>Web construida con <a href="https://pyodide.org/">Pyodide</a> y <a href="https://picocss.com/">pico.css</small></a></p>
         </footer>
     </main>
-
-
-    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-    <script>
-        window.addEventListener('load', (event) => {
-            kofiWidgetOverlay.draw('javierfpanadero', {
-                'type': 'floating-chat',
-                'floating-chat.donateButton.text': 'Donar',
-                'floating-chat.donateButton.background-color': '#EFA00B',
-                'floating-chat.donateButton.text-color': '#fff'
-            });
-        });
-    </script>
-    <script src="app.js"></script>
+    <a href="https://ko-fi.com/javierfpanadero" target="_blank" type="button" class="kofi-btn"><img src="./kofi.png" alt="Ko-fi"/>&nbsp;Donar</a>
+    <script src="./app.js"></script>
 </body>
 
 </html>
