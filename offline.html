@@ -3,9 +3,8 @@
 
 <head>
     <meta charset=utf-8>
-    <title>Generador de Exámenes</title>
+    <title>Generador de Exámenes (Offline)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base href="/generador-examenes/">
     <meta name="description"
         content="Programa para generar exámenes con preguntas de respuesta múltiple con valores variables, para imprimir y para Moodle">
     <meta name="keywords" content="exámen, Moodle, aleatorio">
@@ -15,7 +14,6 @@
         .center {
             text-align: center;
         }
-        /* Ensure footer is tall enough on small screens to avoid Ko‑fi button overlap */
         @media (max-width: 640px) {
           footer.center {
             padding-bottom: 3rem;
@@ -62,7 +60,6 @@
                 <div>
                     <p></p>
                     <button type="submit">Descargar</button>
-                    <!-- The offline download button is injected by main.ts only in production -->
                 </div>
             </form>
         </article>
