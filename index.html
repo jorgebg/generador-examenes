@@ -10,8 +10,6 @@
     <meta name="keywords" content="exámen, Moodle, aleatorio">
     <meta name="author" content="Javier F. Panadero">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
     <style>
         .center {
             text-align: center;
@@ -168,23 +166,12 @@ Ninguna de las anteriores</code></pre>
 <!-- Close README.md -->
         <footer class="center">
             <hr/>
-            <p><small>Web construida con <a href="https://pyodide.org/">Pyodide</a> y <a href="https://picocss.com/">pico.css</small></a></p>
+            <p><small>Web construida con Vite y <a href="https://picocss.com/">PicoCSS</a></small></p>
         </footer>
     </main>
 
 
-    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-    <script>
-        window.addEventListener('load', (event) => {
-            kofiWidgetOverlay.draw('javierfpanadero', {
-                'type': 'floating-chat',
-                'floating-chat.donateButton.text': 'Donar',
-                'floating-chat.donateButton.background-color': '#EFA00B',
-                'floating-chat.donateButton.text-color': '#fff'
-            });
-        });
-    </script>
-    <script src="app.js"></script>
+    <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>
