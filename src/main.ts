@@ -1,6 +1,7 @@
 import '@picocss/pico/css/pico.min.css';
 import { generatePaper } from './paper';
 import { generateMoodle } from './moodle';
+import { initKofi } from './kofi';
 
 function byId<T extends HTMLElement>(id: string): T {
   const el = document.getElementById(id);
@@ -28,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Ready instantly, no Pyodide loading
   show(statusEl, false);
   form.hidden = false;
+
+  // Init Ko‑fi floating button (no CDN)
+  initKofi({ username: 'javierfpanadero' });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
