@@ -14,6 +14,12 @@
         .center {
             text-align: center;
         }
+        /* Ensure footer is tall enough on small screens to avoid Ko‑fi button overlap */
+        @media (max-width: 640px) {
+          footer.center {
+            padding-bottom: 3rem;
+          }
+        }
     </style>
     <link rel="stylesheet" href="/src/kofi.css">
 </head>
@@ -62,8 +68,16 @@
 <!-- Begin README.md -->
 <!-- Close README.md -->
         <footer class="center">
-            <hr/>
-            <p><small>Web construida con Vite y <a href="https://picocss.com/">PicoCSS</a></small></p>
+            <hr />
+            <p>
+              <a
+                href="https://lacienciaparatodos.wordpress.com/2022/07/02/programa-generador-de-examenes-en-papel-y-en-moodle/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Creado por Javier Panadero y Jorge Barata
+              </a>
+            </p>
         </footer>
     </main>
 
