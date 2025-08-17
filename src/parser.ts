@@ -34,13 +34,14 @@ export function splitQuestions(text: string): Question[] {
     if (block.includes(MULTILINE_MARK)) {
       const parts = block.split(MULTILINE_MARK);
       const enunciado = parts.shift()!; // includes trailing \n
-      const after = parts[0];
+      const after = parts[0] ?? '';
       const respuestas = after.split('\n').filter(l => l.length > 0);
       const stmt = enunciado.slice(0, -1); // remove last char as in Python
       questions.push({ lines: [stmt, ...respuestas] });
     } else {
-      const lines = block.split('\n').filter(l => l.length > 0);
-      questions.push({ lines });
+      const arr = block.split('\n').filter(l => l.length > 0);
+      if (arr.length === 0) continue;
+      questions.push({ lines: [arr[0], ...arr.slice(1)] });
     }
   }
   return questions;

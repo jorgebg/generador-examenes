@@ -24,7 +24,7 @@ La idea es que podáis escribir el examen de manera **cómoda e intuitiva**.
 El programa fue desarrollado por [Javier F. Panadero](https://twitter.com/javierfpanadero) y publicado en su blog [La Ciencia
 para todos](https://lacienciaparatodos.wordpress.com/).
 
-Posteriormente, esta web fue desarrollada por [Jorge Barata](https://twitter.com/neuralhacker), facilitando el uso del programa sin necesidad de usar Google Colab.
+Posteriormente, esta web fue desarrollada por [Jorge Barata](https://jorgebg.com), facilitando el uso del programa sin necesidad de usar Google Colab.
 
 ## Instrucciones de uso
 
@@ -71,8 +71,7 @@ Ninguna de las anteriores
 - Si se quiere usar un cálculo con una variable, también entre pareja de arrobas: `@@ x2*3 @@`
 - En el examen en papel las variables tendrán el mismo valor en todo el examen. En Moodle, cambian de valor en cada pregunta.
 - **Guárdese en un archivo txt con codificación UTF-8**
-- Si quieres usar imágenes, sólo tienes que incluir en el enunciado esta etiqueta hmtl
-  ![image](https://user-images.githubusercontent.com/91572665/206852862-8564c491-6f3d-4e7d-8c3f-9644d3eb9926.png)
+- Si quieres usar imágenes, sólo tienes que incluir en el enunciado esta etiqueta html: `<p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg"></p>`
 
 #### Explicación detallada
 
@@ -103,10 +102,14 @@ Ninguna de las anteriores
     - En el examen de moodle se marca como correcta la primera respuesta que pusiste y se resta `1/(n-1)` por respuesta incorrecta, siendo `n` el número de respuestas. Digamos 1/3 en cuatro opciones, 1/4 en cinco opciones, etc.
 9. Si necesitas incluir imágenes, tendrás que hacerlo a mano. Puedes poner en el enunciado Fig 1., Fig 2., etc. y luego añadir un conjunto de figuras o ir incluyéndolas a mano y borrando la referencia.
 10. Si vas a hacer un examen sobre HTML u otro lenguaje de marcado, puede que tengas problemas y el programa confunda tus etiquetas con las suyas.
-11. Si quieres usar imágenes, sólo tienes que incluir en el enunciado esta etiqueta hmtl
-    ![image](https://user-images.githubusercontent.com/91572665/206852862-8564c491-6f3d-4e7d-8c3f-9644d3eb9926.png) Si conoces html puedes añadir texto alternativo, tamaño y el resto de atributos. También puedes intentar añadir más características html a los enunciados o respuestas, creo que funcionarán bien.
+11. Si quieres usar imágenes, sólo tienes que incluir en el enunciado esta etiqueta html: `<p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg"></p>`. Si conoces html puedes añadir texto alternativo, tamaño y el resto de atributos. También puedes intentar añadir más características html a los enunciados o respuestas, creo que funcionarán bien.
 
 
+#### Offline
+
+El programa puede usarse de forma offline descargado la siguiente versión:
+
+<a href="offline.html" download="Generador de Exámenes.html">Generador de Exámenes Offline</a>
 
 #### Código
 
@@ -115,4 +118,3 @@ Para más información sobre el código, consulte los artículos publicados en e
 -   [Creación de exámenes respuesta múltiple con diferentes valores
     ](https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/)
 -   [Programa para subir a Moodle preguntas de respuesta múltiple con valores variables](https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/)
-

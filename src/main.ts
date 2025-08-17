@@ -1,6 +1,7 @@
 import '@picocss/pico/css/pico.min.css';
 import { generatePapel } from './papel';
 import { generateMoodle } from './moodle';
+import { initKofi } from './kofi';
 
 function byId<T extends HTMLElement>(id: string): T {
   const el = document.getElementById(id);
@@ -24,12 +25,14 @@ async function readFileAsText(file: File): Promise<string> {
 document.addEventListener('DOMContentLoaded', () => {
   const statusEl = byId<HTMLParagraphElement>('status');
   const form = document.forms[0];
+  if (!form) throw new Error('Missing <form> element');
 
   // Ready instantly, no Pyodide loading
   show(statusEl, false);
   form.hidden = false;
 
   // Init Ko‑fi floating button (no CDN)
+  initKofi();
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();

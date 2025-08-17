@@ -15,7 +15,7 @@ export interface HeaderParseResult {
 
 export interface Question {
   // First element is statement; following are options
-  lines: string[];
+  lines: [string, ...string[]];
 }
 
 export interface ParsedExam {
