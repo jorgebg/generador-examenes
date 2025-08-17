@@ -116,3 +116,21 @@ Para más información sobre el código, consulte los artículos publicados en e
     ](https://lacienciaparatodos.wordpress.com/2021/12/12/creacion-de-examenes-respuesta-multiple-con-diferentes-valores/)
 -   [Programa para subir a Moodle preguntas de respuesta múltiple con valores variables](https://lacienciaparatodos.wordpress.com/2021/12/15/programa-para-subir-a-moodle-preguntas-de-respuesta-multiple-con-valores-variables/)
 
+
+
+---
+
+### Solución de problemas de instalación (npm)
+
+Si has usado pnpm previamente en este proyecto y ahora cambias a npm, es posible que aparezcan conflictos de dependencias (ERESOLVE) por restos del layout de pnpm.
+
+Pasos recomendados:
+- Borra restos de pnpm y dependencias previas:
+  - macOS/Linux: `rm -rf node_modules pnpm-lock.yaml`
+  - Windows (PowerShell): `Remove-Item -Recurse -Force node_modules; Remove-Item -Force pnpm-lock.yaml`
+- Instala de nuevo con npm: `npm install`
+- Si aún ves conflictos de peer dependencies, este repo incluye `.npmrc` con `legacy-peer-deps=true` para relajar la resolución en entornos locales.
+
+Notas:
+- Ya no es necesario `vite-node`; el script de generación de fixtures usa `tsx` (transpile on the fly) vía `npm run gen:fixtures`.
+- En CI y Pages se usa npm en limpio, por eso allí no se reproducía el conflicto.
