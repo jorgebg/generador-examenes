@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- Pregunta 01  -->
+  <question type="calculatedmulti">
+    <name>
+      <text>Pregunta 01</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pregunta 1 {={x1}}, {={x3}}</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <synchronize>0</synchronize>
+    <single>1</single>
+    <answernumbering>abc</answernumbering>
+    <shuffleanswers>1</shuffleanswers>
+    <correctfeedback>
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text></text>
+    </incorrectfeedback>
+  <answer fraction="100">
+    <text>Respuesta 1a x1/x3 {={x1}/{x3}}</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>2</correctanswerformat>
+    <correctanswerlength>3</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<answer fraction="-50">
+    <text>Respuesta 1b</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>2</correctanswerformat>
+    <correctanswerlength>3</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<answer fraction="-50">
+    <text>Respuesta 1c</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>2</correctanswerformat>
+    <correctanswerlength>3</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<unitgradingtype>0</unitgradingtype>
+    <unitpenalty>0.1000000</unitpenalty>
+    <showunits>3</showunits>
+    <unitsleft>0</unitsleft>
+<dataset_definitions>
+<dataset_definition>
+      <status><text>private</text>
+  </status>
+      <name><text>x1</text>
+  </name>
+      <type>calculatedmulti</type>
+      <distribution><text>uniform</text>
+  </distribution>
+      <minimum><text>20</text>
+  </minimum>
+      <maximum><text>25</text>
+  </maximum>
+      <decimals><text>1</text>
+  </decimals>
+<itemcount>10</itemcount>
+          <dataset_items>
+<dataset_item>
+            <number>1</number>
+            <value>20</value>
+          </dataset_item>
+<dataset_item>
+            <number>2</number>
+            <value>22</value>
+          </dataset_item>
+<dataset_item>
+            <number>3</number>
+            <value>23</value>
+          </dataset_item>
+<dataset_item>
+            <number>4</number>
+            <value>24</value>
+          </dataset_item>
+<dataset_item>
+            <number>5</number>
+            <value>25</value>
+          </dataset_item>
+<dataset_item>
+            <number>6</number>
+            <value>20</value>
+          </dataset_item>
+<dataset_item>
+            <number>7</number>
+            <value>22</value>
+          </dataset_item>
+<dataset_item>
+            <number>8</number>
+            <value>23</value>
+          </dataset_item>
+<dataset_item>
+            <number>9</number>
+            <value>24</value>
+          </dataset_item>
+<dataset_item>
+            <number>10</number>
+            <value>25</value>
+          </dataset_item>
+</dataset_items>
+<number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+      <status><text>private</text>
+  </status>
+      <name><text>x2</text>
+  </name>
+      <type>calculatedmulti</type>
+      <distribution><text>uniform</text>
+  </distribution>
+      <minimum><text>0.3</text>
+  </minimum>
+      <maximum><text>0.4</text>
+  </maximum>
+      <decimals><text>3</text>
+  </decimals>
+<itemcount>10</itemcount>
+          <dataset_items>
+<dataset_item>
+            <number>1</number>
+            <value>0.312</value>
+          </dataset_item>
+<dataset_item>
+            <number>2</number>
+            <value>0.334</value>
+          </dataset_item>
+<dataset_item>
+            <number>3</number>
+            <value>0.356</value>
+          </dataset_item>
+<dataset_item>
+            <number>4</number>
+            <value>0.378</value>
+          </dataset_item>
+<dataset_item>
+            <number>5</number>
+            <value>0.39</value>
+          </dataset_item>
+<dataset_item>
+            <number>6</number>
+            <value>0.312</value>
+          </dataset_item>
+<dataset_item>
+            <number>7</number>
+            <value>0.334</value>
+          </dataset_item>
+<dataset_item>
+            <number>8</number>
+            <value>0.356</value>
+          </dataset_item>
+<dataset_item>
+            <number>9</number>
+            <value>0.378</value>
+          </dataset_item>
+<dataset_item>
+            <number>10</number>
+            <value>0.39</value>
+          </dataset_item>
+</dataset_items>
+<number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+      <status><text>private</text>
+  </status>
+      <name><text>x3</text>
+  </name>
+      <type>calculatedmulti</type>
+      <distribution><text>uniform</text>
+  </distribution>
+      <minimum><text>2</text>
+  </minimum>
+      <maximum><text>8</text>
+  </maximum>
+      <decimals><text>2</text>
+  </decimals>
+<itemcount>12</itemcount>
+          <dataset_items>
+<dataset_item>
+            <number>1</number>
+            <value>2</value>
+          </dataset_item>
+<dataset_item>
+            <number>2</number>
+            <value>4</value>
+          </dataset_item>
+<dataset_item>
+            <number>3</number>
+            <value>6</value>
+          </dataset_item>
+<dataset_item>
+            <number>4</number>
+            <value>8</value>
+          </dataset_item>
+<dataset_item>
+            <number>5</number>
+            <value>2</value>
+          </dataset_item>
+<dataset_item>
+            <number>6</number>
+            <value>4</value>
+          </dataset_item>
+<dataset_item>
+            <number>7</number>
+            <value>6</value>
+          </dataset_item>
+<dataset_item>
+            <number>8</number>
+            <value>8</value>
+          </dataset_item>
+<dataset_item>
+            <number>9</number>
+            <value>2</value>
+          </dataset_item>
+<dataset_item>
+            <number>10</number>
+            <value>4</value>
+          </dataset_item>
+<dataset_item>
+            <number>11</number>
+            <value>6</value>
+          </dataset_item>
+<dataset_item>
+            <number>12</number>
+            <value>8</value>
+          </dataset_item>
+</dataset_items>
+<number_of_items>12</number_of_items>
+</dataset_definition>
+</dataset_definitions>
+</question>
+<!-- Pregunta 02  -->
+  <question type="calculatedmulti">
+    <name>
+      <text>Pregunta 02</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pregunta 2 {={x2}}</p><p>Pregunta 2 (segunda linea)</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <synchronize>0</synchronize>
+    <single>1</single>
+    <answernumbering>abc</answernumbering>
+    <shuffleanswers>1</shuffleanswers>
+    <correctfeedback>
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text></text>
+    </incorrectfeedback>
+  <answer fraction="100">
+    <text>Respuesta 2a x2*2 {={x2}*2}</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>2</correctanswerformat>
+    <correctanswerlength>3</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<answer fraction="-33.33333">
+    <text>Respuesta 2b</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>2</correctanswerformat>
+    <correctanswerlength>3</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<answer fraction="-33.33333">
+    <text>Respuesta 2c</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>2</correctanswerformat>
+    <correctanswerlength>3</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<answer fraction="-33.33333">
+    <text>Respuesta 2d</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>2</correctanswerformat>
+    <correctanswerlength>3</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<unitgradingtype>0</unitgradingtype>
+    <unitpenalty>0.1000000</unitpenalty>
+    <showunits>3</showunits>
+    <unitsleft>0</unitsleft>
+<dataset_definitions>
+<dataset_definition>
+      <status><text>private</text>
+  </status>
+      <name><text>x1</text>
+  </name>
+      <type>calculatedmulti</type>
+      <distribution><text>uniform</text>
+  </distribution>
+      <minimum><text>20</text>
+  </minimum>
+      <maximum><text>25</text>
+  </maximum>
+      <decimals><text>1</text>
+  </decimals>
+<itemcount>10</itemcount>
+          <dataset_items>
+<dataset_item>
+            <number>1</number>
+            <value>20</value>
+          </dataset_item>
+<dataset_item>
+            <number>2</number>
+            <value>22</value>
+          </dataset_item>
+<dataset_item>
+            <number>3</number>
+            <value>23</value>
+          </dataset_item>
+<dataset_item>
+            <number>4</number>
+            <value>24</value>
+          </dataset_item>
+<dataset_item>
+            <number>5</number>
+            <value>25</value>
+          </dataset_item>
+<dataset_item>
+            <number>6</number>
+            <value>20</value>
+          </dataset_item>
+<dataset_item>
+            <number>7</number>
+            <value>22</value>
+          </dataset_item>
+<dataset_item>
+            <number>8</number>
+            <value>23</value>
+          </dataset_item>
+<dataset_item>
+            <number>9</number>
+            <value>24</value>
+          </dataset_item>
+<dataset_item>
+            <number>10</number>
+            <value>25</value>
+          </dataset_item>
+</dataset_items>
+<number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+      <status><text>private</text>
+  </status>
+      <name><text>x2</text>
+  </name>
+      <type>calculatedmulti</type>
+      <distribution><text>uniform</text>
+  </distribution>
+      <minimum><text>0.3</text>
+  </minimum>
+      <maximum><text>0.4</text>
+  </maximum>
+      <decimals><text>3</text>
+  </decimals>
+<itemcount>10</itemcount>
+          <dataset_items>
+<dataset_item>
+            <number>1</number>
+            <value>0.312</value>
+          </dataset_item>
+<dataset_item>
+            <number>2</number>
+            <value>0.334</value>
+          </dataset_item>
+<dataset_item>
+            <number>3</number>
+            <value>0.356</value>
+          </dataset_item>
+<dataset_item>
+            <number>4</number>
+            <value>0.378</value>
+          </dataset_item>
+<dataset_item>
+            <number>5</number>
+            <value>0.39</value>
+          </dataset_item>
+<dataset_item>
+            <number>6</number>
+            <value>0.312</value>
+          </dataset_item>
+<dataset_item>
+            <number>7</number>
+            <value>0.334</value>
+          </dataset_item>
+<dataset_item>
+            <number>8</number>
+            <value>0.356</value>
+          </dataset_item>
+<dataset_item>
+            <number>9</number>
+            <value>0.378</value>
+          </dataset_item>
+<dataset_item>
+            <number>10</number>
+            <value>0.39</value>
+          </dataset_item>
+</dataset_items>
+<number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+      <status><text>private</text>
+  </status>
+      <name><text>x3</text>
+  </name>
+      <type>calculatedmulti</type>
+      <distribution><text>uniform</text>
+  </distribution>
+      <minimum><text>2</text>
+  </minimum>
+      <maximum><text>8</text>
+  </maximum>
+      <decimals><text>2</text>
+  </decimals>
+<itemcount>12</itemcount>
+          <dataset_items>
+<dataset_item>
+            <number>1</number>
+            <value>2</value>
+          </dataset_item>
+<dataset_item>
+            <number>2</number>
+            <value>4</value>
+          </dataset_item>
+<dataset_item>
+            <number>3</number>
+            <value>6</value>
+          </dataset_item>
+<dataset_item>
+            <number>4</number>
+            <value>8</value>
+          </dataset_item>
+<dataset_item>
+            <number>5</number>
+            <value>2</value>
+          </dataset_item>
+<dataset_item>
+            <number>6</number>
+            <value>4</value>
+          </dataset_item>
+<dataset_item>
+            <number>7</number>
+            <value>6</value>
+          </dataset_item>
+<dataset_item>
+            <number>8</number>
+            <value>8</value>
+          </dataset_item>
+<dataset_item>
+            <number>9</number>
+            <value>2</value>
+          </dataset_item>
+<dataset_item>
+            <number>10</number>
+            <value>4</value>
+          </dataset_item>
+<dataset_item>
+            <number>11</number>
+            <value>6</value>
+          </dataset_item>
+<dataset_item>
+            <number>12</number>
+            <value>8</value>
+          </dataset_item>
+</dataset_items>
+<number_of_items>12</number_of_items>
+</dataset_definition>
+</dataset_definitions>
+</question>
+</quiz>

@@ -1,7 +1,5 @@
 import { parseHeader, splitQuestions } from './parser';
 import { buildDatasets, replaceForMoodle } from './eval';
-import { MoodleOptions } from './types';
-import { systemRNG } from './rng';
 
 function pad2(n: number): string {
   return n < 9 ? '0' + (n + 1) : String(n + 1);
@@ -23,8 +21,7 @@ function enunciadoToHtmlP(enunciado: string): string {
   return enunciado;
 }
 
-export function generateMoodle(input: string, options: MoodleOptions = {}): string {
-  const rng = options.rng ?? systemRNG;
+export function generateMoodle(input: string): string {
   const { hasHeader, vars, body } = parseHeader(input);
 
   let working = hasHeader ? replaceForMoodle(body, vars) : body;
@@ -62,7 +59,7 @@ export function generateMoodle(input: string, options: MoodleOptions = {}): stri
     qxml += `<unitgradingtype>0</unitgradingtype>\n    <unitpenalty>0.1000000</unitpenalty>\n    <showunits>3</showunits>\n    <unitsleft>0</unitsleft>\n`;
 
     if (hasHeader) {
-      const datasets = buildDatasets(vars, rng);
+      const datasets = buildDatasets(vars);
       qxml += `<dataset_definitions>\n`;
       for (const d of datasets) {
         const decimals = Math.max(0, 2 + Math.ceil(-Math.log10(Math.abs(d.min))))
@@ -90,7 +87,7 @@ export function generateMoodle(input: string, options: MoodleOptions = {}): stri
     xml += qxml;
   }
 
-  xml = `<?xml version="1.0" encoding="UTF-8"?>\n<quiz>\n` + xml + `</quiz>\n`;
+  xml = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<quiz>\n` + xml + `</quiz>\n`;
 
   return xml;
 }

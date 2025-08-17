@@ -23,16 +23,3 @@ export interface ParsedExam {
   vars: VarDef[];
   questions: Question[];
 }
-
-export interface RandomSource {
-  // returns a float in [0,1)
-  next(): number;
-}
-
-export interface PaperOptions {
-  rng?: RandomSource;
-}
-
-export interface MoodleOptions {
-  rng?: RandomSource;
-}

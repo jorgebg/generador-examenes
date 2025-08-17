@@ -1,15 +1,19 @@
 import { parseHeader, splitQuestions } from './parser';
-import { PaperOptions } from './types';
-import { evaluatePaperExpressions, randomVarValuesForPaper } from './eval';
-import { shuffleInPlace, systemRNG } from './rng';
+import { evaluatePapelExpressions, randomVarValuesForPapel } from './eval';
 
-export function generatePaper(input: string, options: PaperOptions = {}): string {
-  const rng = options.rng ?? systemRNG;
+function shuffleInPlace<T>(arr: T[]): void {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+export function generatePapel(input: string): string {
   const { hasHeader, vars, body } = parseHeader(input);
   let effectiveText = input;
   if (hasHeader) {
-    const values = randomVarValuesForPaper(vars, rng);
-    effectiveText = evaluatePaperExpressions(body, values);
+    const values = randomVarValuesForPapel(vars);
+    effectiveText = evaluatePapelExpressions(body, values);
   }
 
   const questions = splitQuestions(effectiveText);
@@ -21,11 +25,11 @@ export function generatePaper(input: string, options: PaperOptions = {}): string
     if (lines.length < 2) continue; // Ignore malformed
     lines[1] = '$$$' + lines[1]; // mark correct answer
     const responses = lines.slice(1);
-    shuffleInPlace(responses, rng);
+    shuffleInPlace(responses);
     const merged = [lines[0], ...responses];
     modified.push(merged);
   }
-  shuffleInPlace(modified, rng);
+  shuffleInPlace(modified);
 
   // Build key and remove marks
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';

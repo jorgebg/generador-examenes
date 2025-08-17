@@ -1,5 +1,5 @@
 import '@picocss/pico/css/pico.min.css';
-import { generatePaper } from './paper';
+import { generatePapel } from './papel';
 import { generateMoodle } from './moodle';
 
 function byId<T extends HTMLElement>(id: string): T {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let outputFilename = 'output.txt';
       let outputContent = '';
       if (script === 'papel.py') {
-        outputContent = generatePaper(inputContent);
+        outputContent = generatePapel(inputContent);
         outputFilename = 'output.txt';
       } else if (script === 'moodle.py') {
         outputContent = generateMoodle(inputContent);

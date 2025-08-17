@@ -1,27 +1,27 @@
-import { RandomSource, VarDef } from './types';
+import { VarDef } from './types';
 import { Parser } from 'expr-eval';
 
-export interface PaperVarValues {
+export interface PapelVarValues {
   [name: string]: number;
 }
 
-export function randomVarValuesForPaper(vars: VarDef[], rng: RandomSource): PaperVarValues {
-  const result: PaperVarValues = {};
+export function randomVarValuesForPapel(vars: VarDef[]): PapelVarValues {
+  const result: PapelVarValues = {};
   for (const v of vars) {
     if (v.type === 'entero') {
       const min = Math.trunc(v.values[0]);
       const max = Math.trunc(v.values[1]);
-      const val = min + Math.floor(rng.next() * (max - min + 1));
+      const val = min + Math.floor(Math.random() * (max - min + 1));
       result[v.name] = val;
     } else if (v.type === 'real') {
       const min = v.values[0];
       const max = v.values[1];
-      const val = min + rng.next() * (max - min);
+      const val = min + Math.random() * (max - min);
       result[v.name] = val;
     } else if (v.type === 'lista') {
       // In papel.py list values are cast to int
       const list = v.values.map(n => Math.trunc(n));
-      const idx = Math.floor(rng.next() * list.length);
+      const idx = Math.floor(Math.random() * list.length);
       result[v.name] = list[idx];
     }
   }
@@ -29,7 +29,7 @@ export function randomVarValuesForPaper(vars: VarDef[], rng: RandomSource): Pape
 }
 
 // Python's round: bankers rounding (round half to even)
-function pythonRound(x: number, decimals: number): number {
+function roundHalfToEven(x: number, decimals: number): number {
   if (!isFinite(x)) return x;
   const factor = Math.pow(10, decimals);
   const n = x * factor;
@@ -52,12 +52,12 @@ export function roundToSignificant(x: number, n: number): number {
   if (ax === 0) return 0;
   const m = Math.ceil(Math.log10(ax));
   const decimals = n - m;
-  return pythonRound(x, decimals);
+  return roundHalfToEven(x, decimals);
 }
 
 const RE = /@@ (.+?) @@/g;
 
-export function evaluatePaperExpressions(body: string, varValues: PaperVarValues): string {
+export function evaluatePapelExpressions(body: string, varValues: PapelVarValues): string {
   // Find all occurrences non-greedily
   const occurrences: string[] = [];
   body.replace(RE, (_, expr: string) => {
@@ -95,7 +95,7 @@ export interface DatasetVar {
   series: number[]; // length >= 10
 }
 
-export function buildDatasets(vars: VarDef[], rng: RandomSource): DatasetVar[] {
+export function buildDatasets(vars: VarDef[]): DatasetVar[] {
   const seriesLen = 10;
   const datasets: DatasetVar[] = [];
   for (const v of vars) {
@@ -104,7 +104,7 @@ export function buildDatasets(vars: VarDef[], rng: RandomSource): DatasetVar[] {
       const max = Math.trunc(v.values[1]);
       const series: number[] = [];
       for (let i = 0; i < seriesLen; i++) {
-        const val = min + Math.floor(rng.next() * (max - min + 1));
+        const val = min + Math.floor(Math.random() * (max - min + 1));
         series.push(val);
       }
       datasets.push({ name: v.name, min, max, series });
@@ -113,9 +113,9 @@ export function buildDatasets(vars: VarDef[], rng: RandomSource): DatasetVar[] {
       const max = v.values[1];
       const series: number[] = [];
       for (let i = 0; i < seriesLen; i++) {
-        const x = min + rng.next() * (max - min);
+        const x = min + Math.random() * (max - min);
         const decimals = 2 + Math.ceil(-Math.log10(Math.abs(x)));
-        const val = pythonRound(x, decimals);
+        const val = roundHalfToEven(x, decimals);
         series.push(val);
       }
       datasets.push({ name: v.name, min, max, series });
