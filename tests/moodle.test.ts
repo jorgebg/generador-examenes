@@ -1,16 +1,8 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { generateMoodle } from '../src/moodle';
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
-
-function withMockedRandom<T>(seq: number[], fn: () => T): T {
-  const spy = vi.spyOn(Math, 'random').mockImplementation(() => {
-    const v = seq.shift() ?? 0.5;
-    seq.push(v);
-    return v;
-  });
-  try { return fn(); } finally { spy.mockRestore(); }
-}
+import { withMockedRandom, defaultSeq } from './helpers/mockRandom';
 
 function ensureDir(p: string) {
   try { mkdirSync(p, { recursive: true }); } catch {}
@@ -22,10 +14,9 @@ describe('moodle generator fixtures', () => {
   const exam2 = readFileSync(join(base, 'examen2.txt'), 'utf-8');
   const fixturesDir = join(base, 'fixtures');
   ensureDir(fixturesDir);
-  const seq = [0.12, 0.34, 0.56, 0.78, 0.9];
 
   it('matches full XML for examen.txt (seeded)', () => {
-    const out = withMockedRandom(seq.slice(), () => generateMoodle(exam1));
+    const out = withMockedRandom(defaultSeq, () => generateMoodle(exam1));
     const fpath = join(fixturesDir, 'moodle-examen1.xml');
     if (!existsSync(fpath)) {
       writeFileSync(fpath, out, 'utf-8');
@@ -35,7 +26,7 @@ describe('moodle generator fixtures', () => {
   });
 
   it('matches full XML for examen2.txt (seeded)', () => {
-    const out = withMockedRandom(seq.slice(), () => generateMoodle(exam2));
+    const out = withMockedRandom(defaultSeq, () => generateMoodle(exam2));
     const fpath = join(fixturesDir, 'moodle-examen2.xml');
     if (!existsSync(fpath)) {
       writeFileSync(fpath, out, 'utf-8');
