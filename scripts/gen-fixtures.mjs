@@ -1,8 +1,8 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { generatePapel } from '../src/papel.js'
-import { generateMoodle } from '../src/moodle.js'
+import { generatePapel } from '../src/papel'
+import { generateMoodle } from '../src/moodle'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
