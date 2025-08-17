@@ -9,20 +9,28 @@ export function randomVarValuesForPapel(vars: VarDef[]): PapelVarValues {
   const result: PapelVarValues = {};
   for (const v of vars) {
     if (v.type === 'entero') {
-      const min = Math.trunc(v.values[0]);
-      const max = Math.trunc(v.values[1]);
+      const min0 = v.values[0];
+      const max0 = v.values[1];
+      if (min0 === undefined || max0 === undefined) {
+        throw new Error(`Variable '${v.name}': rango inválido`);
+      }
+      const min = Math.trunc(min0);
+      const max = Math.trunc(max0);
       const val = min + Math.floor(Math.random() * (max - min + 1));
       result[v.name] = val;
     } else if (v.type === 'real') {
-      const min = v.values[0];
-      const max = v.values[1];
-      const val = min + Math.random() * (max - min);
+      const min0 = v.values[0];
+      const max0 = v.values[1];
+      if (min0 === undefined || max0 === undefined) {
+        throw new Error(`Variable '${v.name}': rango inválido`);
+      }
+      const val = min0 + Math.random() * (max0 - min0);
       result[v.name] = val;
     } else if (v.type === 'lista') {
       // In papel.py list values are cast to int
       const list = v.values.map(n => Math.trunc(n));
       const idx = Math.floor(Math.random() * list.length);
-      result[v.name] = list[idx];
+      result[v.name] = list[idx]!;
     }
   }
   return result;
@@ -83,7 +91,8 @@ export function evaluatePapelExpressions(body: string, varValues: PapelVarValues
 
   let out = body;
   for (const [expr, value] of map.entries()) {
-    out = out.replaceAll('@@ ' + expr + ' @@', String(value));
+    const needle = '@@ ' + expr + ' @@';
+    out = out.split(needle).join(String(value));
   }
   return out;
 }
@@ -100,8 +109,13 @@ export function buildDatasets(vars: VarDef[]): DatasetVar[] {
   const datasets: DatasetVar[] = [];
   for (const v of vars) {
     if (v.type === 'entero') {
-      const min = Math.trunc(v.values[0]);
-      const max = Math.trunc(v.values[1]);
+      const min0 = v.values[0];
+      const max0 = v.values[1];
+      if (min0 === undefined || max0 === undefined) {
+        throw new Error(`Variable '${v.name}': rango inválido`);
+      }
+      const min = Math.trunc(min0);
+      const max = Math.trunc(max0);
       const series: number[] = [];
       for (let i = 0; i < seriesLen; i++) {
         const val = min + Math.floor(Math.random() * (max - min + 1));
@@ -109,16 +123,19 @@ export function buildDatasets(vars: VarDef[]): DatasetVar[] {
       }
       datasets.push({ name: v.name, min, max, series });
     } else if (v.type === 'real') {
-      const min = v.values[0];
-      const max = v.values[1];
+      const min0 = v.values[0];
+      const max0 = v.values[1];
+      if (min0 === undefined || max0 === undefined) {
+        throw new Error(`Variable '${v.name}': rango inválido`);
+      }
       const series: number[] = [];
       for (let i = 0; i < seriesLen; i++) {
-        const x = min + Math.random() * (max - min);
+        const x = min0 + Math.random() * (max0 - min0);
         const decimals = 2 + Math.ceil(-Math.log10(Math.abs(x)));
         const val = roundHalfToEven(x, decimals);
         series.push(val);
       }
-      datasets.push({ name: v.name, min, max, series });
+      datasets.push({ name: v.name, min: min0, max: max0, series });
     } else if (v.type === 'lista') {
       const values = v.values.map(Number);
       const min = Math.min(...values);
